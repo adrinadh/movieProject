@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block body %}
+  <div class="row">
+    {% for movie in movies %}
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100">
+          {% if movie.img %}
+            <img class="card-img-top custom-card-image" src="{{ movie.img.url }}" alt="Card image cap">
+          {% else %}
+            <div class="no-image-placeholder">
+              No Image Available
+            </div>
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.name }}</h5>
+          </div>
+          <div class="card-footer">
+            <a href="{% url 'movieapp:details' movie.id %}" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
